@@ -1,3 +1,53 @@
+* -*- coding: UTF-8 -*- 
+* -------------------------------------------------------------------
+* Script Name: Analisis_Contribuciones_Experimentos.do
+* Creation Date: 2025-09-23
+* Author: Sofia Obando, Juan David Vargas, Alejandro Herrera
+* Description:
+*   Este script en Stata analiza datos de dos fuentes experimentales 
+*   dentro del Taller 4 de Economía Experimental:
+*
+*   1) Base "juego20252_haciendo_econ.xlsx":
+*      - Datos generados en el aula sobre contribuciones en un juego.
+*      - Incluye importación desde Excel, limpieza de variables
+*        y cálculo de contribuciones promedio por ronda.
+*      - Se generan gráficos de evolución de la cooperación.
+*
+*   2) Base "doing-economics-datafile-working-in-excel-project-2.xlsx":
+*      - Datos del experimento de Herrmann, Thöni y Gächter (2008),
+*        con tratamiento "con castigo" y "sin castigo".
+*      - Se realiza análisis descriptivo de medias, varianzas, 
+*        mínimos, máximos y comparación de periodos 1 y 10.
+*      - Se generan gráficos comparativos (líneas y barras).
+*
+*   El objetivo es contrastar los resultados del juego en clase 
+*   con los patrones descritos en los experimentos internacionales,
+*   explorando la dinámica de cooperación, el free-riding y 
+*   el efecto del castigo sobre las contribuciones.
+*
+*   El análisis incluye:
+*     - Importación de datos desde Excel (.xlsx)
+*     - Renombramiento y conversión de variables (contribución, ronda)
+*     - Limpieza de datos (relleno de rondas faltantes, exclusión de NA)
+*     - Cálculo de la contribución promedio por período (ronda)
+*     - Visualización mediante:
+*         • Gráfico de línea de la contribución promedio por ronda
+*         • Gráficos comparativos en rondas iniciales y finales
+*
+* Notes:
+*   - Ajustar la ruta de los archivos Excel antes de ejecutar.
+*   - Los valores faltantes se excluyen de los cálculos.
+*   - Los gráficos se muestran en la ventana de resultados de Stata.
+*
+* References:
+*   Taller 4 – Experimentos ES :contentReference[oaicite:0]{index=0}
+*   Herrmann, B., Thöni, C., & Gächter, S. (2008).
+*     "Antisocial punishment across societies." Science, 319(5868), 1362–1367.
+*   Archivos: 
+*     - juego20252_haciendo_econ.xlsx 
+*     - doing-economics-datafile-working-in-excel-project-2.xlsx
+* -------------------------------------------------------------------
+
 clear all
 
 *-------------------------------------------------------------------------------
@@ -247,6 +297,7 @@ ttest valor, by(tratamiento)
 
 * (Opcional) descriptivos
 tabstat valor, by(tratamiento) stats(mean sd n)
+
 
 
 
